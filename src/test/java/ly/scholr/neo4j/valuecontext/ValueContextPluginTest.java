@@ -34,7 +34,7 @@ public class ValueContextPluginTest extends AbstractNeo4jTestCase {
     index = getGraphDb().index().forNodes(INDEX_NAME, config);
     newTransaction();
 
-    plugin.postLong(node, INDEX_NAME, KEY_NAME, 25l);
+    plugin.postLongNode(node, INDEX_NAME, KEY_NAME, 25l);
     newTransaction();
   }
 

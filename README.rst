@@ -5,6 +5,8 @@ Numeric index values in Neo4j can be manipulated trivially using ValueContext_,
 but this functionality is not currently exposed to the REST API.
 Neo4j ValueContext Plugin extends the `Neo4j REST service`_ to permit indexing of numeric values.
 
+Nodes and relationships can be indexed with types int, long, float, and double.
+
 .. _ValueContext: http://api.neo4j.org/current/org/neo4j/index/lucene/ValueContext.html
 
 .. _Neo4j REST service: http://components.neo4j.org/neo4j-server/milestone/rest.html
