@@ -27,12 +27,12 @@ Give the reference node a timestamp value of 25::
 Query the time index for nodes with timestamps between 1 and 8.
 The result is empty because 25 ∉ [1, 8]::
 
- curl -H Accept:application/json http://localhost:7474/db/data/ext/ValueContextPlugin/node/0/get_long_range \
+ curl -H Accept:application/json http://localhost:7474/db/data/ext/ValueContextPlugin/graphdb/get_long_range_node \
    -H "Content-Type: application/json" -d '{"index": "time", "key":"timestamp", "min":1, "max":8}'
 
 Query the time index for nodes with timestamps between 8 and 30.
 The result contains the ref node because 25 ∈ [8, 30]::
 
- curl -H Accept:application/json http://localhost:7474/db/data/ext/ValueContextPlugin/node/0/get_long_range \
+ curl -H Accept:application/json http://localhost:7474/db/data/ext/ValueContextPlugin/graphdb/get_long_range_node \
    -H "Content-Type: application/json" -d '{"index": "time", "key":"timestamp", "min":8, "max":30}'
 

@@ -11,7 +11,7 @@ import org.neo4j.index.lucene.QueryContext;
 import org.neo4j.index.lucene.ValueContext;
 import org.neo4j.server.plugins.*;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class ValueContextPlugin extends ServerPlugin {
 
@@ -33,13 +33,13 @@ public class ValueContextPlugin extends ServerPlugin {
     } finally {
       tx.finish();
     }
-    return Arrays.asList();
+    return new ArrayList<Node>(0);
   }
 
-  @Name("get_long_range")
-  @PluginTarget(Node.class)
-  public Iterable<Node> getLongRange(
-      @Source Node node,
+  @Name("get_long_range_node")
+  @PluginTarget(GraphDatabaseService.class)
+  public Iterable<Node> getLongRangeNode(
+      @Source GraphDatabaseService graphDb,
       @Parameter(name = "index") String indexName,
       @Parameter(name = "key") String key,
       @Parameter(name = "min") Long minNullable,
@@ -50,7 +50,6 @@ public class ValueContextPlugin extends ServerPlugin {
     Sort sort = new Sort(new SortField(key, SortField.LONG, false));
     Object query = NumericRangeQuery.newLongRange(key, min, max, true, true);
 
-    GraphDatabaseService graphDb = node.getGraphDatabase();
     Index<Node> index = graphDb.index().forNodes(indexName);
 
     Iterable<Node> hits;
