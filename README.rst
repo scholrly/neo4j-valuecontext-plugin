@@ -23,8 +23,6 @@ Give the reference node a timestamp value of 25::
 
  curl -H Accept:application/json http://localhost:7474/db/data/ext/Catnap/node/0/post_long \
    -H "Content-Type: application/json" -d '{"index": "time", "key":"timestamp", "value":25}'
- curl -H Accept:application/json \
-   http://localhost:7474/db/data/index/node/time/timestamp/25
 
 Query the time index for nodes with timestamps between 1 and 8.
 The result is empty because 25 ∉ [1, 8]::
